@@ -1,0 +1,83 @@
+@use "./variables" as *;
+
+/* Start Chefs */
+.chefs {
+  .container {
+    display: flex;
+    ///
+    // we set it to space-around to be responsive without adding media, this is a fast responsive solution on cases like this, but to work we will need to give our boxes width manually
+    justify-content: space-around;
+    flex-wrap: wrap;
+    ///
+    gap: $content_gap;
+    .box {
+      width: 350px;
+      // here we set width manually to fit all screens, which means while we are reducing the screen width.. at some point there will not be enough space to remain all elements's width to 350px and stay next to each other, by default they will shrink, but.. we set the wrap so they will keep wrapping down one by one and each one's width will remain 350px, but in a decent design because of our justify-content: space-around.
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: $main_shadow;
+      transition: transform $transition;
+      position: relative;
+      .image {
+        position: relative;
+        img {
+          width: 100%;
+        }
+        &::before {
+          content: "";
+          background-image: url(../images/wave.svg);
+          width: 100%;
+          height: 78px;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          @media (max-width: 400px) {
+            bottom: -15px;
+          }
+        }
+      }
+      .text {
+        padding: $main_gap;
+        color: $prim_gray;
+        text-align: center;
+        position: relative;
+        h3 {
+          color: $prim_black;
+          margin-bottom: 5px;
+        }
+        p {
+          margin-top: 10px;
+          font-style: italic;
+          font-size: 15px;
+          line-height: 1.4;
+        }
+      }
+      .links {
+        background-color: rgba(255, 255, 255, 0.55);
+        border-radius: 10px;
+        width: fit-content;
+        position: absolute;
+        ///
+        // note that we gave out box overflow: hidden,
+        // this code explained at gallery section, we used the same method
+        top: 60px;
+        right: -42px;
+        ///
+        transition: right $transition;
+        a {
+          display: block;
+          color: rgba(55, 55, 63, 0.4);
+          font-size: 22px;
+          padding: 10px;
+        }
+      }
+      &:hover {
+        transform: scale(1.1);
+        .links {
+          right: 10px;
+        }
+      }
+    }
+  }
+}
+/* End Chefs */

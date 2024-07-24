@@ -1,0 +1,98 @@
+@use "./variables" as *;
+
+/* Start Contact */
+.contact {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: $content_gap;
+    iframe {
+      height: 350px;
+      border-radius: 8px;
+    }
+    .info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $content_gap;
+      justify-content: space-between;
+      .box {
+        width: calc(50% - ($content_gap / 2));
+        display: flex;
+        align-items: center;
+        gap: $main_gap;
+        background-color: #f5f5f5;
+        padding: 25px;
+        border-radius: 8px;
+        i {
+          width: 50px;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          background-color: $dark-red;
+          border-radius: 50%;
+          color: white;
+        }
+        .text {
+          flex: 1;
+          h3 {
+            font-family: $ter_font;
+            color: $ter_gray;
+            font-size: 20px;
+            margin-bottom: 5px;
+          }
+          p,
+          a {
+            color: $prim_black;
+          }
+        }
+        @media (max-width: 767px) {
+          width: 100%;
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $main_gap;
+      box-shadow: $main_shadow;
+      padding: $main_gap;
+      border-radius: 4px;
+      input,
+      textarea {
+        width: 100%;
+        padding: 20px;
+        border: 2px solid #e8e3e3;
+        border-radius: 8px;
+        transition: box-shadow $transition;
+        &[name="name"],
+        &[name="email"] {
+          width: calc(50% - $main_gap * 0.5);
+          @media (max-width: 767px) {
+            width: 100%;
+          }
+        }
+        &[name="send"] {
+          background-color: $dark-red;
+          border-radius: 40px;
+          width: fit-content;
+          margin: auto;
+          padding: 15px 30px;
+          font-size: 17px;
+          color: white;
+          cursor: pointer;
+          transition: background-color $transition;
+          &:hover {
+            background-color: $light_red;
+          }
+        }
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 5px 1px $dark-red;
+        }
+      }
+    }
+  }
+}
+/* End Contact */

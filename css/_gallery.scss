@@ -1,0 +1,63 @@
+@use "./variables" as *;
+
+/* Start Gallery */
+.gallery {
+  .container {
+    display: flex;
+    justify-content: center; // to center elements on mobile screen, thus we will only need to set flex-wrap: wrap at media 767px
+    gap: $main_gap;
+    .col {
+      display: flex;
+      // to make the below gap between elements vertically without using margin-bottom.
+      ///
+      flex-direction: column;
+      gap: $main_gap;
+      ///
+      .image {
+        border: 5px solid white;
+        position: relative;
+        overflow: hidden; // to not show over-lay outside our element before hover.
+        img {
+          display: block; // to fill gaps between the image and the border we made (check without it and zoom).
+          width: 100%; // to minimize original img width to its parent width, which we didn't give any width to it (explained at the end).
+        }
+        .over-lay {
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7);
+          ///
+          // this code for centering text in the middle of the image (modern css centering).
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          ///
+          color: white;
+          position: absolute;
+          left: 0;
+          bottom: -100%; // to let the over-lay outside of the image until we hover on it, will go up smoothly.
+          transition: bottom $transition;
+          h3 {
+            font-size: 24px;
+            font-family: $ter_font;
+          }
+          p {
+            padding: $main_gap;
+          }
+        }
+        &:hover .over-lay {
+          bottom: 0;
+        }
+      }
+    }
+    @media (max-width: 767px) {
+      flex-wrap: wrap;
+    }
+  }
+}
+/// Note That in chefs section we set a width manually to our boxes, at this section we didn't set width manually to elements with .col class, so how the image didn't expand it's full size and the design remains decent?
+/// because one of flex properties is to distribute the width on all elements while we didn't set the flex-wrap to wrap.
+/// thus we had 3 elements at this case (the .cols class, which is the parent for our img as described at line 22), while the is no wrapping they will remain side by side with a decent width.
+/// in line 53 we created a media that sets the flex-wrap to wrap ,, thus each one of .col classes will take 100% of screen width and will be under each other as desired.
+
+/* End Gallery */

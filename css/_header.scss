@@ -1,0 +1,101 @@
+@use "./variables" as *;
+/* Start Home */
+header {
+  background-color: white;
+  box-shadow: $main_shadow;
+  padding: 25px 0;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      display: block;
+      color: $prim_black;
+      font-size: 30px;
+      font-weight: bold;
+      &::after {
+        content: ".";
+        color: $dark-red;
+      }
+    }
+    .show {
+      display: none;
+      cursor: pointer;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      li {
+        position: relative;
+        a {
+          color: $prim_gray;
+          font-weight: 600;
+          font-size: 17px;
+          padding: 5px;
+          &::after {
+            content: "";
+            background-color: $dark-red;
+            width: 0;
+            height: 2px;
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+            transition: width $transition;
+          }
+          &:hover {
+            &::after {
+              width: 100%;
+            }
+          }
+          &.active {
+            color: black;
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    @media (max-width: 767px) {
+      .theme {
+        display: none;
+      }
+      .nav {
+        display: none;
+        height: 65px;
+        background-color: rgba($color: black, $alpha: 0.8);
+        width: 100%;
+        justify-content: center;
+        padding: 15px;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        li {
+          a {
+            color: white;
+            font-weight: 400;
+            &.active {
+              color: #fefded;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+      .show {
+        display: block;
+        &:hover + ul {
+          display: flex;
+        }
+      }
+    }
+    .theme {
+      font-size: 25px;
+      cursor: pointer;
+    }
+  }
+}
+/* End Home */

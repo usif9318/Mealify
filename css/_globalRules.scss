@@ -1,0 +1,70 @@
+@use "./variables" as *;
+
+/* Start Global Rules */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $prim_font;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  padding-left: $main_gap;
+  padding-right: $main_gap;
+  margin-left: auto;
+  margin-right: auto;
+  @media (min-width: 768px) {
+    width: 750px;
+  }
+  @media (min-width: 992px) {
+    width: 970px;
+  }
+  @media (min-width: 1200px) {
+    width: 1170px;
+  }
+}
+.section {
+  padding: $section_gap;
+}
+.bg {
+  background-color: $gray_bg;
+}
+.section-title {
+  text-align: center;
+  margin-bottom: $content_gap * 2;
+  > span {
+    font-family: $ter_font;
+    text-transform: uppercase;
+    color: $prim_gray;
+  }
+  h2 {
+    font-family: $sec_font;
+    color: $sec_black;
+    font-size: 50px;
+    font-weight: normal;
+    line-height: 0.9;
+    span {
+      color: $dark-red;
+    }
+  }
+}
+/* End Global Rules */

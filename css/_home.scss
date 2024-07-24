@@ -1,0 +1,101 @@
+@use "./variables" as *;
+
+/* Start Home */
+.home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    .text {
+      max-width: 50%;
+      h2 {
+        color: $sec_black;
+        font-family: $sec_font;
+        font-size: 65px;
+        font-weight: 600;
+      }
+      p {
+        color: $sec_gray;
+        margin: $main_gap 0;
+        max-width: 80%;
+      }
+      .buttons {
+        display: flex;
+        align-items: center;
+        gap: $content_gap;
+        .book {
+          background-color: $dark-red;
+          color: white;
+          font-weight: bold;
+          padding: 10px 25px;
+          border-radius: 25px;
+          border-top-left-radius: 0;
+          transition: background-color $transition;
+          &:hover {
+            background-color: $light_red;
+          }
+        }
+        .video {
+          color: black;
+          font-weight: bold;
+          z-index: 1;
+          transition: color $transition;
+          i {
+            margin-right: $main_gap * 0.5;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+            &::after {
+              content: "";
+              background-image: linear-gradient(
+                to right,
+                $dark-red 50%,
+                transparent 50% 100%
+              );
+              width: 125%;
+              height: 125%;
+              border-radius: 50%;
+              position: absolute;
+              top: -5px;
+              left: -6px;
+              z-index: -1;
+            }
+          }
+          &:hover {
+            color: $dark_red;
+          }
+        }
+      }
+    }
+    .image {
+      padding: $main_gap;
+      max-width: 450px;
+      img {
+        width: 100%;
+      }
+    }
+    @media (max-width: 991px) {
+      .text {
+        order: 1;
+        max-width: 100%;
+        text-align: center;
+        p {
+          max-width: 100%;
+        }
+        .buttons {
+          flex-direction: column;
+          gap: $main_gap;
+        }
+      }
+    }
+  }
+}
+/* End Home */
